@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :products
+  resources :products,  :path => '/'
   resources :pens, controller: :products, :type => "Pen"
   resources :notebooks, controller: :products, :type => "Notebook"
   # The priority is based upon order of creation: first created -> highest priority.
