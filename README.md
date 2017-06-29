@@ -1,5 +1,5 @@
-# STI
-Implement STI using Rails
+# Single Table Inheritance Application
+Implement STI using Rails and Products model of type "Pen" & "Notebook"
 
 *** Important Instrcutions ***
 
