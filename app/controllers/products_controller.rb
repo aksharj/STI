@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_type, only: [:new,:edit]
 
   # GET /products
   # GET /products.json
@@ -14,7 +15,7 @@ class ProductsController < ApplicationController
 
   # GET /products/new
   def new
-    @product = Product.new
+    @product = @type.eql?("Pen") ? Pen.new : Notebook.new 
   end
 
   # GET /products/1/edit
@@ -67,8 +68,18 @@ class ProductsController < ApplicationController
       @product = Product.find(params[:id])
     end
 
+    def set_type
+      @type = params[:type] ? params[:type] : @product.type
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :price, :color, :status, :inward_date, :type, :description)
+      type = params[:type]
+      case type
+        when 'Notebook'  
+          params.require(:notebook).permit(:name, :price, :color, :status, :inward_date, :type, :description)
+        when 'Pen'
+          params.require(:pen).permit(:name, :price, :color, :status, :inward_date, :type, :description)
+        end
     end
 end

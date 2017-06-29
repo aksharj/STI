@@ -21,20 +21,17 @@
   </div>
   <div class="field">
     <%= f.label :color %><br>
-    <%= f.text_field :color %>
+    <%= f.select :color, Product::COLORS,{}, class: "selectpicker"%>
   </div>
   <div class="field">
-    <%= f.label :status %><br>
-    <%= f.number_field :status %>
+    <%= f.label :status, "Enabled" %><br>
+    <%= f.check_box :status %>
   </div>
   <div class="field">
     <%= f.label :inward_date %><br>
     <%= f.date_select :inward_date %>
   </div>
-  <div class="field">
-    <%= f.label :type %><br>
-    <%= f.text_field :type %>
-  </div>
+  <%= f.hidden_field :type, :value => @type %>
   <div class="field">
     <%= f.label :description %><br>
     <%= f.text_field :description %>
