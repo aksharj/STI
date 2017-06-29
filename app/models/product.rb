@@ -3,8 +3,6 @@ class Product < ActiveRecord::Base
   validates_presence_of :name,:description,:price
   validates_numericality_of :price
   
+  scope :price_sum, ->(product_type) {where(:type => product_type).sum(:price)}
   
-  def self.price_sum(product_type)
-    self.where(:type => product_type).sum(:price)
-  end
 end
