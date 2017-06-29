@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :price %><br>
-    <%= f.text_field :price %>
+    <%= f.number_field :price %>
   </div>
   <% if @type.eql?("Pen")%>
 	  <div class="field">
@@ -31,7 +31,7 @@
   </div>
   <div class="field">
     <%= f.label :inward_date %><br>
-    <%= f.date_select :inward_date %>
+    <%= f.date_select :inward_date, :order => [:month,:day,:year] %>
   </div>
   <%= f.hidden_field :type, :value => @type %>
   <div class="field">
